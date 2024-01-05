@@ -7,7 +7,7 @@ export const onIndexShow = [
 	'mobile.app.record.index.show'
 ]
 
-export interface Event<T = unknown> {
+export interface Event<T = Yasumi.SavedFields[]> {
   type: string;
   appId: number;
   viewId: number;

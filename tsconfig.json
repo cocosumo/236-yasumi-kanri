@@ -23,6 +23,7 @@
   },
   "files": [
     "./node_modules/@kintone/dts-gen/kintone.d.ts",
+    "./types/yasumi.d.ts",
   ],
   "include": [
     "src", 

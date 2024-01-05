@@ -4,14 +4,12 @@ module.exports = {
         "es2021": true
     },
     "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
+        "xo",
+        "xo-react",
         "plugin:react/recommended",
-        "plugin:react-hooks/recommended",
-        "plugin:@tanstack/eslint-plugin-query/recommended",
-        "plugin:markdown/recommended"
+        "plugin:react/jsx-runtime",
+        "plugin:@tanstack/eslint-plugin-query/recommended"
     ],
-    
     "overrides": [
         {
             "env": {
@@ -23,20 +21,24 @@ module.exports = {
             "parserOptions": {
                 "sourceType": "script"
             }
+        },
+        {
+            "extends": [
+                "xo-typescript"
+            ],
+            "files": [
+                "*.ts",
+                "*.tsx"
+            ]
         }
     ],
-    "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaVersion": "latest",
-        "sourceType": "module",
-        "project": "./tsconfig.json"
+        "sourceType": "module"
     },
     "plugins": [
-        "@typescript-eslint",
         "react"
     ],
     "rules": {
-        "@typescript-eslint/consistent-type-exports": "error",
-        "@typescript-eslint/consistent-type-imports": "error"
     }
 }
