@@ -11,6 +11,7 @@
     "strictNullChecks": true,
     "paths": {
       "@api/*": ["./@api/*"],
+      "@"
       "@events/*": ["./@events/*"],
       "@components/*": ["./@components/*"],
       "@view/*": ["./@view/*"],
