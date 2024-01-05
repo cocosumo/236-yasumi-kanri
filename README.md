@@ -19,9 +19,9 @@
   ```
 2. Install packages
   
-    ```
-    npm install
-    ```
+  ```
+  npm install
+  ```
 
 3. Run development
 
