@@ -1,2 +1,4 @@
 *.d.ts
 dist
+tsconfig.json
+.eslintrc.js

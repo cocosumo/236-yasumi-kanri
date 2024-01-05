@@ -1,0 +1,1 @@
+Contains kintone views.

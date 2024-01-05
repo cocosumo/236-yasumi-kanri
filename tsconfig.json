@@ -13,8 +13,8 @@
       "@api/*": ["./@api/*"],
       "@events/*": ["./@events/*"],
       "@components/*": ["./@components/*"],
-      "@view/*": ["./view/*"],
-      "@helpers/*": ["./helpers/*"],
+      "@view/*": ["./@view/*"],
+      "@helpers/*": ["./@helpers/*"],
       "@hooks/*": ["./@hooks/*"],
       "@cached/*": ["./@hooks/cached/*"],
       "@/*": ["./*"],
@@ -27,6 +27,9 @@
   "include": [
     "src", 
   ], // which files to compile
-  "exclude": ["node_modules"], // which files to skip
+  "exclude": [
+    "node_modules",
+    ".eslint.js"
+    ], // which files to skip
   
 }

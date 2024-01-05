@@ -6,3 +6,15 @@ export const onIndexShow = [
   'app.record.index.show',
 	'mobile.app.record.index.show'
 ]
+
+export interface Event<T = unknown> {
+  type: string;
+  appId: number;
+  viewId: number;
+  viewName: string;
+  viewType: string;
+  records: T;
+  date?: string;
+  offset?: number;
+  size?: number;
+}

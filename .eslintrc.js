@@ -8,8 +8,10 @@ module.exports = {
         "plugin:@typescript-eslint/recommended",
         "plugin:react/recommended",
         "plugin:react-hooks/recommended",
-        "plugin:@tanstack/eslint-plugin-query/recommended"
+        "plugin:@tanstack/eslint-plugin-query/recommended",
+        "plugin:markdown/recommended"
     ],
+    
     "overrides": [
         {
             "env": {
@@ -26,12 +28,15 @@ module.exports = {
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaVersion": "latest",
-        "sourceType": "module"
+        "sourceType": "module",
+        "project": "./tsconfig.json"
     },
     "plugins": [
         "@typescript-eslint",
         "react"
     ],
     "rules": {
+        "@typescript-eslint/consistent-type-exports": "error",
+        "@typescript-eslint/consistent-type-imports": "error"
     }
 }

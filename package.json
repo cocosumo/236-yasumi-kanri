@@ -5,6 +5,7 @@
   "main": "dist/customize.js",
   "scripts": {
     "envexample": "generate-env-example",
+    
     "tsc": "tsc --noEmit --project tsconfig.json",
     "upload:local": "dotenv -- npx kintone-customize-uploader dest/kintone.local.json",
     "dev": "esbuild src/index.ts --bundle --define:process.env.NODE_ENV='development' --minify=false --outfile=dist/customize.js  --watch"
