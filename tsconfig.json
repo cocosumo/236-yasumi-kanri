@@ -11,7 +11,8 @@
     "strictNullChecks": true,
     "paths": {
       "@api/*": ["./@api/*"],
-      "@"
+      "@assets": ["./@assets"],
+      "@styles": ["./@assets"],
       "@events/*": ["./@events/*"],
       "@components/*": ["./@components/*"],
       "@view/*": ["./@view/*"],
@@ -24,6 +25,7 @@
   },
   "files": [
     "./node_modules/@kintone/dts-gen/kintone.d.ts",
+    "./types/index.d.ts",
     "./types/yasumi.d.ts",
   ],
   "include": [
