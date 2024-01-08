@@ -10,7 +10,6 @@
     "upload:local": "dotenv -- npx kintone-customize-uploader dest/kintone.local.json",
     "dev": "esbuild src/index.ts --bundle --define:process.env.NODE_ENV='development' --minify=false --loader:.png=dataurl --outfile=dist/customize.js  --watch",
     "build": "esbuild src/index.ts --bundle --define:process.env.NODE_ENV='production' --minify=true --loader:.png=dataurl --outfile=dist/customize.js"
-
   },
   "author": "Lorenz Ras",
   "license": "ISC",
@@ -37,6 +36,10 @@
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
+    "@fullcalendar/core": "^6.1.10",
+    "@fullcalendar/daygrid": "^6.1.10",
+    "@fullcalendar/interaction": "^6.1.10",
+    "@fullcalendar/react": "^6.1.10",
     "@kintone/customize-uploader": "^8.0.6",
     "@mui/icons-material": "^5.15.3",
     "@mui/material": "^5.15.3",
