@@ -8,7 +8,9 @@
     "dtsgen:yasumi": "dotenv -- npx kintone-dts-gen --app-id 108 --namespace Yasumi -o types/yasumi.d.ts",
     "tsc": "tsc --noEmit --project tsconfig.json",
     "upload:local": "dotenv -- npx kintone-customize-uploader dest/kintone.local.json",
-    "dev": "esbuild src/index.ts --bundle --define:process.env.NODE_ENV='development' --minify=false --loader:.png=dataurl --outfile=dist/customize.js  --watch"
+    "dev": "esbuild src/index.ts --bundle --define:process.env.NODE_ENV='development' --minify=false --loader:.png=dataurl --outfile=dist/customize.js  --watch",
+    "build": "esbuild src/index.ts --bundle --define:process.env.NODE_ENV='production' --minify=true --loader:.png=dataurl --outfile=dist/customize.js"
+
   },
   "author": "Lorenz Ras",
   "license": "ISC",
