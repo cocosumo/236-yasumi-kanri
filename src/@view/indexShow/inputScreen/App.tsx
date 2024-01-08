@@ -1,3 +1,12 @@
+import {Container} from '@mui/material';
+import HelpButton from './HelpButton';
+import Instructions from './instructions';
+
 export default function App() {
-	return <>Hello</>;
+	return (
+		<Container maxWidth='md'>
+			<HelpButton/>
+			<Instructions/>
+		</Container>
+	);
 }
