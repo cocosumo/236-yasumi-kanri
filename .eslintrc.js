@@ -6,6 +6,7 @@ module.exports = {
     "extends": [
         "xo",
         "xo-react",
+        "xo-typescript",
         "plugin:react/recommended",
         "plugin:react/jsx-runtime",
         "plugin:@tanstack/eslint-plugin-query/recommended"
@@ -22,15 +23,6 @@ module.exports = {
                 "sourceType": "script"
             }
         },
-        {
-            "extends": [
-                "xo-typescript"
-            ],
-            "files": [
-                "*.ts",
-                "*.tsx"
-            ]
-        }
     ],
     "parserOptions": {
         "ecmaVersion": "latest",
@@ -40,5 +32,17 @@ module.exports = {
         "react"
     ],
     "rules": {
+        "@typescript-eslint/naming-convention": [
+            "error",
+            { "selector": "default", "format": ["PascalCase", "camelCase"] },
+            { "selector": "property", "format": ["PascalCase", "camelCase", "snake_case"] },
+            
+            //Ignore destructured names
+            {
+                "selector": "variable",
+                "modifiers": ["destructured"],
+                "format": null
+            }
+          ],
     }
 }
