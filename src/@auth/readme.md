@@ -31,7 +31,7 @@ oAuth2を参考にTSで自動化しました。
     npx ts-node scripts/getRefreshToken.ts
 ```
 
-access_tokenとrefresh_tokenを取得し、取得日時とともにディスクに格納される。
+access_tokenとrefresh_tokenを取得し、取得日時とともにメモリに格納される。
 
 ### 5. APIの実行
 

@@ -19,6 +19,7 @@
   "devDependencies": {
     "@kintone/dts-gen": "^8.0.3",
     "@tanstack/eslint-plugin-query": "^5.17.1",
+    "@types/lodash": "^4.14.202",
     "@types/node": "^20.10.6",
     "@types/qs": "^6.9.11",
     "@types/react": "^18.2.46",
@@ -35,6 +36,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "generate-env-example": "^1.1.0",
     "jest": "^29.7.0",
+    "lodash": "^4.17.21",
     "prettier": "3.1.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
