@@ -10,9 +10,10 @@
     "cypress:open": "cypress open",
     "upload:local": "dotenv -- npx kintone-customize-uploader dest/kintone.local.json",
     "upload:prod": "dotenv -- npx kintone-customize-uploader dest/kintone.prod.json",
+    "test": "jest --verbose ./src/__TEST__",
     "dev": "esbuild src/index.ts --bundle --define:process.env.NODE_ENV='development' --minify=false --loader:.png=dataurl --outfile=dist/customize.js  --watch",
     "build": "esbuild src/index.ts --bundle --define:process.env.NODE_ENV='production' --minify=true --loader:.png=dataurl --outfile=dist/customize.js",
-    "test": "jest"
+    "deploy": "npm run build"
   },
   "author": "Lorenz Ras",
   "license": "ISC",
