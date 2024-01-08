@@ -32,7 +32,8 @@
     "src",
     "cypress",
     "*.config.ts",
-    "__TEST__"
+    "scripts",
+    "src/__TEST__"
   ], // which files to compile
   "exclude": [
     "node_modules",
