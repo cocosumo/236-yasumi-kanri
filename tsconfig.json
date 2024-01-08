@@ -29,11 +29,13 @@
     "./types/yasumi.d.ts",
   ],
   "include": [
-    "src", 
+    "src",
+    "cypress",
+    "*.config.ts"
   ], // which files to compile
   "exclude": [
     "node_modules",
     ".eslint.js"
-    ], // which files to skip
+  ], // which files to skip
   
 }
