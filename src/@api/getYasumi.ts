@@ -1,6 +1,7 @@
 import {appId} from '@config/appIds';
 import {ktRecord} from './kintoneClient';
 import {dateRangeByYearMonth} from '@helpers/dateRangeByYearMonth';
+import {type IYasumi, type KYasumi} from '@/dbtypes';
 
 export type GetYasumiParams = {
 	year: number | string;
@@ -8,7 +9,8 @@ export type GetYasumiParams = {
 	accountCode: string;
 };
 
-const yasumiDateKey: keyof Yasumi.SavedFields = 'yasumiDate';
+const yasumiDateKey: KYasumi = 'yasumiDate';
+const accoundCodeKey: KYasumi = '申請者';
 
 export const getYasumi = async ({
 	year,
@@ -19,18 +21,23 @@ export const getYasumi = async ({
 
 	const queries: string[] = [];
 
+	if (!accountCode) {
+		throw new Error('accountCode is required');
+	}
+
 	const dateRange = dateRangeByYearMonth({
 		year: Number(year),
 		month: Number(month),
 	});
 
+	console.log('dateRange', dateRange);
+
 	queries.push(`${yasumiDateKey} >= "${dateRange.start}"`);
 	queries.push(`${yasumiDateKey} <= "${dateRange.end}"`);
+	queries.push(`${accoundCodeKey} in ("${accountCode}")`);
 
 	return record.getRecords({
 		app: appId,
 		query: queries.join(' and '),
-	}).then(response => {
-		response.records as unknown as Yasumi.SavedFields[];
-	});
+	}).then(response => response.records as unknown as IYasumi[]);
 };
