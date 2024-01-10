@@ -11,14 +11,16 @@
     "strictNullChecks": true,
     "paths": {
       "@api/*": ["./@api/*"],
+      "@config": ["./@config"],
       "@assets": ["./@assets"],
-      "@styles": ["./@assets"],
+      "@styles": ["./@styles"],
       "@events/*": ["./@events/*"],
       "@components/*": ["./@components/*"],
       "@view/*": ["./@view/*"],
       "@helpers/*": ["./@helpers/*"],
       "@hooks/*": ["./@hooks/*"],
       "@cached/*": ["./@hooks/cached/*"],
+      "@providers/*": ["./@providers/*"],
       "@/*": ["./*"],
     },
     "esModuleInterop": true

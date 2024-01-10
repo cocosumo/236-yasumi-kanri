@@ -1,8 +1,8 @@
-import {devAppId, prodAppId} from '../config/appIds';
+import {devAppId, prodAppId} from '../@config/appIds';
 import {ktApp} from '../@api/kintoneClient';
 import {beforeAll, describe, expect, it} from '@jest/globals';
 import {type Properties} from '@kintone/rest-api-client/lib/src/client/types';
-import {type ReferenceTable, type Lookup, type OneOf} from '@kintone/rest-api-client/lib/src/KintoneFields/types/property';
+import {type OneOf} from '@kintone/rest-api-client/lib/src/KintoneFields/types/property';
 
 const isLookup = (fieldSettings: OneOf) => 'lookup' in fieldSettings;
 const isReferenceTable = (fieldSettings: OneOf) => fieldSettings.type === 'REFERENCE_TABLE';

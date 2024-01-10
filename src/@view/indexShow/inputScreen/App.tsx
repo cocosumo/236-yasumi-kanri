@@ -6,9 +6,9 @@ import Input from './input';
 export default function App() {
 	return (
 		<Container maxWidth='md'>
-			<HelpButton/>
+			{/* <HelpButton/> */}
 			<Input/>
-			<Instructions/>
+			{/* <Instructions/> */}
 		</Container>
 	);
 }
