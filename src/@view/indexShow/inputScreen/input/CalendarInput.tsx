@@ -20,22 +20,17 @@ export function CalendarInput() {
 
 	return (
 		<FullCalendar
-			dayCellContent={args => {
-				if (args.isOther) {
-					return;
-				}
-
-				return renderDayCell({
-					...args,
-					yasumiRecord: data.find(({yasumiDate}) => yasumiDate.value === formatToKintoneDate(args.date)),
-				});
-			}}
+			dayCellContent={args => renderDayCell({
+				...args,
+				yasumiRecord: data.find(({yasumiDate}) => yasumiDate.value === formatToKintoneDate(args.date)),
+			})}
 			plugins={[dayGridPlugin, interactionPlugin]}
 			initialView='dayGridMonth'
 			locale={jaLocale}
 			height='auto'
 			fixedWeekCount={false}
 			datesSet={datesSet}
+			showNonCurrentDates={false}
 		/>
 	);
 }

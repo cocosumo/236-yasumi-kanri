@@ -1,7 +1,9 @@
 import {type DayCellContentArg} from '@fullcalendar/core';
-import {Box, Button, Stack, Typography} from '@mui/material';
+import {Box, Button, Stack, Typography, Zoom} from '@mui/material';
 import {type IYasumi} from '@/dbtypes';
-import {TypeIcon} from './TypeIcon';
+import TypeIcon from './TypeIcon';
+import resolveIconUrl from '@helpers/resolveIconUrl';
+import {useYasumiDay} from './useYasumiDay';
 
 type IProps = {
 	readonly yasumiRecord?: IYasumi;
@@ -13,7 +15,17 @@ function DayCell(props: IProps) {
 		yasumiRecord,
 	} = props;
 
-	const isExist = Boolean(yasumiRecord);
+	const {
+		currentRecord,
+		onClickDay,
+		onRightClick,
+	} = useYasumiDay(yasumiRecord);
+
+	const iconUrl = resolveIconUrl(currentRecord);
+
+	const isExist = Boolean(currentRecord);
+
+	const imageAlt = `${currentRecord?.type.value} (${currentRecord?.duration.value} ${currentRecord?.ステータス.value}`;
 
 	return (
 		<Button
@@ -21,6 +33,8 @@ function DayCell(props: IProps) {
 				width: '100%',
 				height: '100%',
 			}}
+			onClick={onClickDay}
+			onContextMenu={onRightClick}
 		>
 
 			<Stack
@@ -30,12 +44,17 @@ function DayCell(props: IProps) {
 				<Typography width='100%' textAlign='center'>
 					{dayNumberText}
 				</Typography>
-				<Box height={65}>
-					{isExist && (
-						<TypeIcon yasumiRecord={yasumiRecord!}/>
-					)}
+				<Zoom key={currentRecord?.duration.value} in={isExist}>
 
-				</Box>
+					<Box height={65}>
+						{iconUrl && (
+							<TypeIcon
+								alt={imageAlt}
+								src={iconUrl}
+							/>
+						)}
+					</Box>
+				</Zoom>
 
 			</Stack>
 		</Button>
