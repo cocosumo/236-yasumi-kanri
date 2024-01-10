@@ -1,6 +1,7 @@
 import {KintoneRestAPIClient} from '@kintone/rest-api-client';
 import {addMinutes, isPast, format} from 'date-fns';
 import {getNewAccessToken} from '@auth/getNewAccessToken';
+
 import 'dotenv/config';
 
 const isTest = process.env.NODE_ENV === 'test';

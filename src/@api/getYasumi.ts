@@ -1,43 +1,40 @@
 import {appId} from '@config/appIds';
-import {ktRecord} from './kintoneClient';
-import {dateRangeByYearMonth} from '@helpers/dateRangeByYearMonth';
 import {type IYasumi, type KYasumi} from '@/dbtypes';
+import {browserKt} from './kintoneClientBrowser';
 
 export type GetYasumiParams = {
-	year: number | string;
-	month: number | string;
-	accountCode: string;
+	dateStart: string;
+	dateEnd: string;
+	accountCode?: string;
 };
 
 const yasumiDateKey: KYasumi = 'yasumiDate';
 const accoundCodeKey: KYasumi = '申請者';
 
-export const getYasumi = async ({
-	year,
-	month,
-	accountCode,
-}: GetYasumiParams) => {
-	const record = await ktRecord();
+export const getYasumi = async (
+	{
+		dateStart,
+		dateEnd,
+		accountCode,
+	}: GetYasumiParams,
+	/** Optional client to use. Default  is browser client. */
+	ktRecord = browserKt.record,
+) => {
+	const record = ktRecord;
 
 	const queries: string[] = [];
 
-	if (!accountCode) {
-		throw new Error('accountCode is required');
+	queries.push(`${yasumiDateKey} >= "${dateStart}"`);
+	queries.push(`${yasumiDateKey} <= "${dateEnd}"`);
+
+	if (accountCode) {
+		queries.push(`${accoundCodeKey} in ("${accountCode}")`);
 	}
 
-	const dateRange = dateRangeByYearMonth({
-		year: Number(year),
-		month: Number(month),
-	});
-
-	console.log('dateRange', dateRange);
-
-	queries.push(`${yasumiDateKey} >= "${dateRange.start}"`);
-	queries.push(`${yasumiDateKey} <= "${dateRange.end}"`);
-	queries.push(`${accoundCodeKey} in ("${accountCode}")`);
-
-	return record.getRecords({
+	return record.getAllRecords({
 		app: appId,
-		query: queries.join(' and '),
-	}).then(response => response.records as unknown as IYasumi[]);
+		condition: queries.join(' and '),
+		orderBy: `${yasumiDateKey} asc`,
+		withCursor: false,
+	}).then(response => response as unknown as IYasumi[]);
 };

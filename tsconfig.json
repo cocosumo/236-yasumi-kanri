@@ -20,6 +20,7 @@
       "@helpers/*": ["./@helpers/*"],
       "@hooks/*": ["./@hooks/*"],
       "@cached/*": ["./@hooks/cached/*"],
+      "@providers/*": ["./@providers/*"],
       "@/*": ["./*"],
     },
     "esModuleInterop": true
