@@ -3,9 +3,11 @@ import {formatToKintoneDate} from '@helpers/formatToKintoneDate';
 import {endOfMonth, startOfMonth} from 'date-fns';
 import {atom, useAtom} from 'jotai';
 
+const now = new Date();
+
 export const currentRangeAtom = atom<{dateStart: string; dateEnd: string}>({
-	dateStart: formatToKintoneDate(startOfMonth(new Date())),
-	dateEnd: formatToKintoneDate(endOfMonth(new Date())),
+	dateStart: formatToKintoneDate(startOfMonth(now)),
+	dateEnd: formatToKintoneDate(endOfMonth(now)),
 });
 
 export const useCalendarInput = () => {
@@ -14,7 +16,8 @@ export const useCalendarInput = () => {
 	const datesSet = ({view}: DatesSetArg) => {
 		setCurrentView({
 			dateStart: formatToKintoneDate(view.currentStart),
-			dateEnd: formatToKintoneDate(view.currentEnd),
+			// Use end of month as fullcalendar's end date uses the first day of the next month
+			dateEnd: formatToKintoneDate(endOfMonth(view.currentStart)),
 		});
 	};
 

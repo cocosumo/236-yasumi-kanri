@@ -33,7 +33,7 @@ module.exports = {
       { selector: "default", format: ["PascalCase", "camelCase"] },
       {
         selector: "property",
-        format: ["PascalCase", "camelCase", "snake_case"],
+        format: ["PascalCase", "camelCase", "snake_case",],
       },
 
       //Ignore destructured names
