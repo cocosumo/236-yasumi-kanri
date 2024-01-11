@@ -1,5 +1,7 @@
 # 【ここすも】休み管理
 
+WIP This is a work in progress. 
+This will be suspended until the future of kintone in the company is clear.
 
 ## Contributing
 
