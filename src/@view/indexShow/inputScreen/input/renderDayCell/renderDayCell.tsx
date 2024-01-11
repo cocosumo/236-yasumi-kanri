@@ -1,25 +1,34 @@
 import {type DayCellContentArg} from '@fullcalendar/core';
 import {Box, Button, Stack, Typography, Zoom} from '@mui/material';
-import {type IYasumi} from '@/dbtypes';
+import {type IYasumiPicked, type IYasumi} from '@/dbtypes';
 import TypeIcon from './TypeIcon';
 import resolveIconUrl from '@helpers/resolveIconUrl';
 import {useYasumiDay} from './useYasumiDay';
+import {type Dispatch} from 'react';
+import {type UpsertAction} from '@hooks/useSaveYasumi';
 
-type IProps = {
-	readonly yasumiRecord?: IYasumi;
+export type IProps = {
+	readonly yasumiRecord?: IYasumi | IYasumiPicked;
+	readonly setUpsertRecords: Dispatch<UpsertAction>;
 } & DayCellContentArg;
 
 function DayCell(props: IProps) {
 	const {
 		dayNumberText,
+		date,
 		yasumiRecord,
+		setUpsertRecords,
 	} = props;
 
 	const {
 		currentRecord,
 		onClickDay,
 		onRightClick,
-	} = useYasumiDay(yasumiRecord);
+	} = useYasumiDay({
+		date,
+		yasumiRecord,
+		setUpsertRecords,
+	});
 
 	const iconUrl = resolveIconUrl(currentRecord);
 

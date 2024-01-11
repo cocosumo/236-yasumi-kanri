@@ -8,6 +8,7 @@ import {type ComponentProps} from 'react';
 import {useYasumiOfUser} from '@hooks/useYasumiOfUser';
 import {formatToKintoneDate} from '@helpers/formatToKintoneDate';
 import './CalendarInput.css';
+import {useSaveYasumi} from '@hooks/useSaveYasumi';
 
 export type FullCalendarProps = ComponentProps<typeof FullCalendar>;
 
@@ -18,11 +19,16 @@ export function CalendarInput() {
 
 	const {data = []} = useYasumiOfUser();
 
+	const {
+		setUpsertRecords,
+	} = useSaveYasumi();
+
 	return (
 		<FullCalendar
 			dayCellContent={args => renderDayCell({
 				...args,
 				yasumiRecord: data.find(({yasumiDate}) => yasumiDate.value === formatToKintoneDate(args.date)),
+				setUpsertRecords,
 			})}
 			plugins={[dayGridPlugin, interactionPlugin]}
 			initialView='dayGridMonth'

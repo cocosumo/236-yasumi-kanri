@@ -10,6 +10,7 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
     "plugin:@tanstack/eslint-plugin-query/recommended",
+    "plugin:react-hooks/recommended"
   ],
   overrides: [
     {
